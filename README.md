@@ -92,3 +92,23 @@ c. Make sure that `base:master` is set to `master` on left hand side of arrow fr
 d. Assign 3 to 4 reviewers for the code changes you want to merge. You need `Approve` from at least two reviewers in order to merge changes to `master` branch.
 
 e. If you are a reviewer assigned to a PR, make sure that the code looks sane and good coding practices are followed. Provide `Review Comments` asking for additional changes if you see something off. Otherwise, if everything looks ok, `Approve` the PR and the changes are good to merge to master branch.
+
+D. Running CoffeeTime App
+-------------------------
+Inside coffeetime-app directory, you can run several commands:
+
+`yarn start`: Starts the development server.
+
+`yarn build`: Bundles the app into static files for production.
+
+`yarn test`: Starts the test runner.
+
+`yarn eject`: Removes this tool and copies build dependencies, configuration files and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+```
+cd coffeetime-app
+yarn start
+```
+
+Happy coding!
