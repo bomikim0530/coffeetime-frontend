@@ -65,6 +65,7 @@ git pull
 
 git checkout yourname-dev
 git merge master
+git push
 ```
 This will pull all the latest changes from master branch into your own dev branch.
 
