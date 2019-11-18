@@ -15,6 +15,7 @@ We will be using following plugins which will makes React development easy for u
 1. [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode) (by Microsoft)
 2. [ES7 React/Redux/GraphQL snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) (by dsznajder)
 3. [Latest Typescript and Javascript Grammar](https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar) (by Microsoft)
+4. [Git Lens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) (by Eric Amodio)
 
 C. Github Process
 -----------------
@@ -59,8 +60,10 @@ git checkout yourname-dev
 ### 5. Before Making Changes (DO THIS ALWAYS)
 Make sure that you run below commands before starting to make any changes (even if you are on your dev branch) -
 ```
-git checkout yourname-dev
+git checkout master
+git pull
 
+git checkout yourname-dev
 git merge master
 ```
 This will pull all the latest changes from master branch into your own dev branch.
