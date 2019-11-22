@@ -1,11 +1,8 @@
 // React imports
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
-// Amplify imports
-import { configureAmplify } from "./services";
-import Auth from "@aws-amplify/auth";
-import { withAuthenticator } from "aws-amplify-react";
+// import Popper from "popper.js";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 // Start: Styling imports
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,23 +16,6 @@ import Col from "react-bootstrap/Col";
 // End: Styling imports
 
 class App extends Component {
-  state = {
-    identityId: ""
-  };
-
-  constructor(props) {
-    super(props);
-    Auth.currentCredentials().then(
-      response => {
-        // console.log(response.data.IdentityId);
-        this.state.identityId = response.data.IdentityId;
-      },
-      err => {
-        console.log("Unable to fetch current credentials");
-      }
-    );
-  }
-
   render() {
     return (
       <Container className="App">
@@ -50,8 +30,5 @@ class App extends Component {
   }
 }
 
-configureAmplify();
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-
-export default withAuthenticator(App, true);
+// export default withAuthenticator(App, true);
+export default App;
