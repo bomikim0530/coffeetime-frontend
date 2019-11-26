@@ -1,7 +1,7 @@
 import React from "react";
 import App from "../../App";
 import { configureAmplify } from "../../services";
-
+import { Router, Link } from "@reach/router";
 // import $ from "jquery";
 
 import { Hub } from 'aws-amplify';
@@ -80,7 +80,7 @@ class AppWithAuth extends React.Component {
     return (
       <div>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} href="/" to="/">
             <img
               alt=""
               src="../../favicon.ico"
@@ -93,8 +93,8 @@ class AppWithAuth extends React.Component {
           {this.state.isSignedIn && (
             <div className="d-flex">
               <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Events</Nav.Link>
+                <Nav.Link as={Link} to='/'href="/">Home</Nav.Link>
+                <Nav.Link as={Link} to='/events'href="/events">Events</Nav.Link>
               </Nav>
               <Nav className="profile-dropdown">
                 <NavDropdown
@@ -116,7 +116,8 @@ class AppWithAuth extends React.Component {
         </Navbar>
         {!this.state.isSignedIn && (<Authenticator hide={[Greetings]}>
         </Authenticator>)}
-        {this.state.isSignedIn && (<App />)}
+        {this.state.isSignedIn && (
+          <App />)}
       </div>
     );
   }
