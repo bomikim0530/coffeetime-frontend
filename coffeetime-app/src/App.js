@@ -23,7 +23,7 @@ class App extends Component {
       <Container className="App">
         <Router>
           <Home path="/home" />
-          <Events path="events" />
+          <Events path="/events" />
         </Router>
       </Container>
     );
