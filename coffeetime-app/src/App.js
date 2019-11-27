@@ -20,9 +20,6 @@ import Profile from "./components/Profile/Profile"
 import BusinessDetails from "./components/BusinessDetails/BusinessDetails"
 
 class App extends Component {
-  // constructor(props){
-  //   super(props);
-  // }
   render() {
     return (
       <Container className="App">
