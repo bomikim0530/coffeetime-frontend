@@ -15,7 +15,7 @@ export function configureAmplify() {
     }
   });
 }
-//Configure Storage with S3 bucket information
-// export function SetS3Config(level){
-//   Amplify.Storage.configure({ level: level});
-// }
+// Configure Storage with S3 bucket information
+export function SetS3Config(level){
+  Amplify.Storage.configure({ level: level});
+}
