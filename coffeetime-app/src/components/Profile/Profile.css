@@ -1,0 +1,6 @@
+.profile-form {
+    max-width: 480px;
+}
+.profile-form .form-row, .profile-form .form-group, .profile-form button {
+    text-align: left;
+}

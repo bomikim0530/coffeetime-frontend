@@ -1,6 +1,6 @@
 // React imports
 import React, { Component } from "react";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 
 // import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -16,14 +16,21 @@ import Container from "react-bootstrap/Container";
 
 import Home from "./components/Home/Home"
 import Events from "./components/Events/Events"
+import Profile from "./components/Profile/Profile"
+import BusinessDetails from "./components/BusinessDetails/BusinessDetails"
 
 class App extends Component {
+  // constructor(props){
+  //   super(props);
+  // }
   render() {
     return (
       <Container className="App">
         <Router>
-          <Home path="/home" />
-          <Events path="/events" />
+          <Home path="/" username={this.props.username}/>
+          {/*<Events path="/events" />*/}
+          <Profile path="/profile" username={this.props.username}/>
+          <BusinessDetails path="/businessdetails" username={this.props.username}/>
         </Router>
       </Container>
     );

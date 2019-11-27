@@ -1,7 +1,7 @@
 import React from "react";
 import App from "../../App";
 import { configureAmplify } from "../../services";
-import { Router, Link } from "@reach/router";
+import { Link } from "@reach/router";
 // import $ from "jquery";
 
 import { Hub } from 'aws-amplify';
@@ -94,7 +94,7 @@ class AppWithAuth extends React.Component {
             <div className="d-flex">
               <Nav className="mr-auto">
                 <Nav.Link as={Link} to='/'href="/">Home</Nav.Link>
-                <Nav.Link as={Link} to='/events'href="/events">Events</Nav.Link>
+                {/* <Nav.Link as={Link} to='/events'href="/events">Events</Nav.Link> */}
               </Nav>
               <Nav className="profile-dropdown">
                 <NavDropdown
@@ -102,7 +102,7 @@ class AppWithAuth extends React.Component {
                   id="collasible-nav-dropdown"
                   drop="left"
                 >
-                  <NavDropdown.Item href="#action/3.1">
+                  <NavDropdown.Item as={Link} to='/profile'href="/profile">
                     Edit Profile
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
@@ -117,7 +117,7 @@ class AppWithAuth extends React.Component {
         {!this.state.isSignedIn && (<Authenticator hide={[Greetings]}>
         </Authenticator>)}
         {this.state.isSignedIn && (
-          <App />)}
+          <App username={this.state.username}/>)}
       </div>
     );
   }
