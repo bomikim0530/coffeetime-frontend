@@ -16,7 +16,7 @@ import axios from "axios";
 import { Link } from "@reach/router";
 
 // React Components import
-import PathConstants from "../../utils";
+import {searchApi} from "../../utils";
 import Search from "../Search/Search";
 import Favorites from "../Favorites/Favorites";
 
@@ -28,7 +28,7 @@ class Home extends Component {
       searchData: null,
       cardGrid: null
     };
-    console.log(localStorage.getItem(this.props.username));
+    // console.log(localStorage.getItem(this.props.username));
   }
 
   async getSearchResponse() {
@@ -40,8 +40,8 @@ class Home extends Component {
       sort_by: "distance",
       open_now: true
     };
-    const response = await axios.get("https://e43cwusoi1.execute-api.us-east-1.amazonaws.com/dev/yelp-search", null, {header: {"Access-Control-Allow-Origin": "*"}});
-    return response.data.body;
+    const response = await axios.get(searchApi, {params: queryParameters }, {header: {"Access-Control-Allow-Origin": "*"}});
+    return response.data.businesses;
   }
 
   componentDidMount() {
@@ -65,7 +65,7 @@ class Home extends Component {
       k = 0;
     while (i + j < cardsList.length) {
       for (let j = 0; j < 3; j++) {
-        if (i + j == cardsList.length - 1) {
+        if (i + j === cardsList.length - 1) {
           break;
         } else {
           if (cardDeckLists[k] === undefined) {
@@ -89,12 +89,12 @@ class Home extends Component {
   }
 
   prepareCardGrid() {
-    const cardsList = this.state.searchData.businesses.map((business, key) => (
+    const cardsList = this.state.searchData.map((business, key) => (
       <Card key={key}>
         <Card.Img
           variant="top"
           src={
-            business.image_url == undefined
+            business.image_url === undefined
               ? require("../../assets/hero.jpeg")
               : business.image_url
           }
@@ -111,8 +111,8 @@ class Home extends Component {
           <Button
             variant="primary"
             as={Link}
-            to="/businessdetails"
-            href="/businessdetails"
+            to={"/business/details/"+business.id}
+            href={"/business/details/"+business.id}
           >
             View Details
           </Button>

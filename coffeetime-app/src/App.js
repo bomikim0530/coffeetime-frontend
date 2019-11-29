@@ -15,7 +15,7 @@ import Container from "react-bootstrap/Container";
 // End: Styling imports
 
 import Home from "./components/Home/Home"
-import Events from "./components/Events/Events"
+// import Events from "./components/Events/Events"
 import Profile from "./components/Profile/Profile"
 import BusinessDetails from "./components/BusinessDetails/BusinessDetails"
 
@@ -27,7 +27,7 @@ class App extends Component {
           <Home path="/" username={this.props.username}/>
           {/*<Events path="/events" />*/}
           <Profile path="/profile" username={this.props.username}/>
-          <BusinessDetails path="/businessdetails" username={this.props.username}/>
+          <BusinessDetails path="/business/details/:businessId" username={this.props.username}/>
         </Router>
       </Container>
     );
