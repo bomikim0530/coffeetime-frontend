@@ -1,4 +1,4 @@
-table {
+/* table {
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 30px;
 }
@@ -7,9 +7,15 @@ table {
     border: 0px solid rgba(0, 0, 0, 0.2);
     width: 700px;
     text-align: left;
-}
+} */
 
 h3 {
     text-align: left;
     color: #1249e0;
+}
+
+.business-thumbnail {
+    width: auto;
+    height: 200px;
+    max-width:400px;
 }

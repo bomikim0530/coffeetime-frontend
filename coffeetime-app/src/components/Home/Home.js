@@ -16,7 +16,7 @@ import axios from "axios";
 import { Link } from "@reach/router";
 
 // React Components import
-import {searchApi} from "../../utils";
+import { searchApi } from "../../utils";
 import Search from "../Search/Search";
 import Favorites from "../Favorites/Favorites";
 
@@ -24,11 +24,9 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorites: [],
       searchData: null,
       cardGrid: null
     };
-    // console.log(localStorage.getItem(this.props.username));
   }
 
   async getSearchResponse() {
@@ -40,7 +38,7 @@ class Home extends Component {
       sort_by: "distance",
       open_now: true
     };
-    const response = await axios.get(searchApi, {params: queryParameters }, {header: {"Access-Control-Allow-Origin": "*"}});
+    const response = await axios.get(searchApi, { params: queryParameters }, { header: { "Access-Control-Allow-Origin": "*" } });
     return response.data.businesses;
   }
 
@@ -65,13 +63,13 @@ class Home extends Component {
       k = 0;
     while (i + j < cardsList.length) {
       for (let j = 0; j < 3; j++) {
-        if (i + j === cardsList.length - 1) {
+        if (i + j === cardsList.length) {
           break;
         } else {
           if (cardDeckLists[k] === undefined) {
             cardDeckLists[k] = [];
           }
-          cardDeckLists[k].push(this.wrapCardInColumn(cardsList[i + j], i+j));
+          cardDeckLists[k].push(this.wrapCardInColumn(cardsList[i + j], i + j));
         }
       }
       i = i + 3;
@@ -80,7 +78,7 @@ class Home extends Component {
     return cardDeckLists;
   }
 
-  wrapCardInColumn(card,key) {
+  wrapCardInColumn(card, key) {
     return (
       <Col xs="12" sm="12" lg="4" key={key}>
         {card}
@@ -90,7 +88,7 @@ class Home extends Component {
 
   prepareCardGrid() {
     const cardsList = this.state.searchData.map((business, key) => (
-      <Card key={key}>
+      <Card key={key} as={Link} to={"/business/details/" + business.id} href={"/business/details/" + business.id}>
         <Card.Img
           variant="top"
           src={
@@ -107,16 +105,6 @@ class Home extends Component {
             UI consistency
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <Button
-            variant="primary"
-            as={Link}
-            to={"/business/details/"+business.id}
-            href={"/business/details/"+business.id}
-          >
-            View Details
-          </Button>
-        </Card.Footer>
       </Card>
     ));
     const cardListsof3 = this.makeCardListsOf3(cardsList);
@@ -133,7 +121,7 @@ class Home extends Component {
           <h2>Search for cafes</h2>
           <Search />
         </Jumbotron>
-        <Favorites username={this.props.username} />
+        <Favorites username={this.props.username} favorites={this.props.favorites} />
         <Jumbotron>
           <div>{this.state.cardGrid}</div>
         </Jumbotron>
