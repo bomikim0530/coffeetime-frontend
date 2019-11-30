@@ -2,3 +2,17 @@
     width: auto;
     height: 200px;
 }
+
+
+
+#Hero {  
+    background-size: cover; 
+    background-image:url('../../assets/searchFinal.jpg');
+    opacity: 0.9;
+}
+
+
+#searchTitle {
+    color: white;
+    font-family: monospace;
+}

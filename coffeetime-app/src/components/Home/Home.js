@@ -129,8 +129,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Jumbotron>
-          <h2>Search for cafes</h2>
+        <Jumbotron id='Hero'>
+          <h1 id='searchTitle'>Coffee First.</h1>
           <Search />
         </Jumbotron>
         <Favorites username={this.props.username} />
