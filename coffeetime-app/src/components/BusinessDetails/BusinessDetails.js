@@ -8,8 +8,8 @@ import { detailApi, reviewsApi } from "../../utils";
 
 // Other components import
 import CommentForm from './CommentForm.js';
-import CommentView from './CommentView.js';
 import Favorite from './Favorite.js';
+import ListOfComments from './ListOfComments.js';
 
 class BusinessDetails extends Component {
   constructor(props) {
@@ -114,7 +114,7 @@ class BusinessDetails extends Component {
                 </tbody>
               </table>
               <h3>Reviews</h3>
-              <table className="inside"><tbody><tr><td width="100%"><CommentView pageid={this.props.businessId} username={this.props.username} getLatestComments={this.getLatestComments} getYelpComments={this.getYelpComments} /></td></tr></tbody></table>
+              <table className="inside"><tbody><tr><td width="100%"><ListOfComments pageid={this.props.businessId} username={this.props.username} getLatestComments={this.getLatestComments} getYelpComments={this.getYelpComments} /></td></tr></tbody></table>
               <CommentForm pageid={this.props.businessId} username={this.props.username} refreshCommentsView={this.refreshCommentsViewHandler} />
             </td>
           </tr>

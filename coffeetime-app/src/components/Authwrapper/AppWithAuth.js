@@ -98,7 +98,7 @@ class AppWithAuth extends React.Component {
               </Nav>
               <Nav className="profile-dropdown">
                 <NavDropdown
-                  title="Chintan"
+                  title="Account"
                   id="collasible-nav-dropdown"
                   drop="left"
                 >
