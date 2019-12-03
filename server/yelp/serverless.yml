@@ -40,6 +40,17 @@ functions:
           cors: true # Turn on CORS for this endpoint, but don't forget to return the right header in your response
           request:
               template: lambda_proxy
+  eventsearch:
+    handler: handler.eventSearch
+    layers:
+      - { Ref: FusionLambdaLayer }
+    events: # The Events that trigger this Function
+      - http: # This creates an API Gateway HTTP endpoint which can be used to trigger this function.  Learn more in "events/apigateway"
+          path: yelp/events/search # Path for this endpoint
+          method: get # HTTP method for this endpoint
+          cors: true # Turn on CORS for this endpoint, but don't forget to return the right header in your response
+          request:
+              template: lambda_proxy
 
 layers:
   fusion:
