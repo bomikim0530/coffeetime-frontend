@@ -24,6 +24,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchLoc: null,
       searchData: null,
       cardGrid: null
     };
@@ -31,9 +32,10 @@ class Home extends Component {
 
   async getSearchResponse() {
     // fetch data from a url endpoint
+    let loc = this.state.searchLoc ? this.state.searchLoc: "berkeley";
     let queryParameters = {
       term: "coffee",
-      location: "berkeley",
+      location: loc,
       categories: "Food",
       sort_by: "distance",
       open_now: true
@@ -114,12 +116,27 @@ class Home extends Component {
     this.setState({ cardGrid: cardGrid });
   }
 
+  updateLocationhandler(location) {
+    // alert("parent = " + location);
+
+    (async () => {
+      try {
+        const searchData = await this.getSearchResponse();
+        this.setState({ searchData: searchData });
+        this.prepareCardGrid();
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+
+  }
+
   render() {
     return (
       <div>
         <Jumbotron id='Hero'>
           <h1 id='searchTitle'>Coffee First.</h1>
-          <Search />
+          <Search updateLocation={this.updateLocationhandler} />
         </Jumbotron>
         <Favorites username={this.props.username} favorites={this.props.favorites} />
         <Jumbotron>
