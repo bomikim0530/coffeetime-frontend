@@ -136,7 +136,7 @@ class Home extends Component {
     return (
       <div>
         <Jumbotron id='Hero'>
-          <h1 id='searchTitle'>Coffee in {this.state.searchLoc}</h1>
+          <h1 id='searchTitle'>Coffee places in {this.state.searchLoc}!</h1>
           <Search updateLocation={this.updateLocationhandler} />
         </Jumbotron>
         <Favorites username={this.props.username} favorites={this.props.favorites} />

@@ -25,15 +25,20 @@ class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchLoc: "berkeley",
       searchData: null,
       cardGrid: null
     };
+
+    this.updateLocationhandler = this.updateLocationhandler.bind(this);
   }
 
   async getSearchResponse() {
     // fetch data from a url endpoint
+    const loc = this.state.searchLoc;
+    // alert(loc);
     let queryParameters = {
-      location: "berkeley",
+      location: loc,
       categories: "food-and-drink",
       sort_by: "desc",
     };
@@ -115,12 +120,25 @@ class Events extends Component {
     this.setState({ cardGrid: cardGrid });
   }
 
+  updateLocationhandler(location) {
+    this.setState({searchLoc: location},
+    (async () => {
+      try {
+        const searchData = await this.getSearchResponse();
+        this.setState({ searchData: searchData });
+        this.prepareCardGrid();
+      } catch (e) {
+        console.log(e);
+      }
+    }));
+  }
+
   render() {
     return (
       <div>
         <Jumbotron id='Hero'>
-          <h1 id='searchTitle'>Upcoming Events @Berkeley !</h1>
-          <Search />
+          <h1 id='searchTitle'>Upcoming Events in {this.state.searchLoc}!</h1>
+          <Search updateLocation={this.updateLocationhandler} />
         </Jumbotron>
         
         {/*<Favorites username={this.props.username} favorites={this.props.favorites} />*/}
@@ -131,17 +149,6 @@ class Events extends Component {
       </div>
     );
   }
-
-  /*render() {
-    return (
-      <Row>
-        <Col>Welcome to Events!</Col>
-        <Col>
-          <Button variant="primary">React Boostrap Button</Button>
-        </Col>
-      </Row>
-    );
-  } */
 }
 
 export default Events;
