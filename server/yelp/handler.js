@@ -43,6 +43,15 @@ const getBusinessReviews = async (event) => {
     return data;
 }
 
+const getEvents = async (event) => {
+    let data = {}
+    if (event.queryStringParameters != null) {
+        const response = await client.eventSearch({categories: event.queryStringParameters['categories'], location: event.queryStringParameters['location']});
+        data = await response.jsonBody;
+    }
+    return data;
+}
+
 module.exports.search = async (event, context) => {
     // TODO implement
     const data = await getClients(event);
@@ -73,6 +82,17 @@ module.exports.businessDetail = async (event, context) => {
 module.exports.businessReview = async (event, context) => {
     // TODO implement
     const data = await getBusinessReviews(event);
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify(data),
+        headers: default_headers
+    }
+    return response;
+};
+
+module.exports.eventSearch = async (event, context) => {
+    // TODO implement
+    const data = await getEvents(event);
     const response = {
         statusCode: 200,
         body: JSON.stringify(data),
