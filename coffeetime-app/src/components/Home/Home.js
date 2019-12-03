@@ -93,7 +93,7 @@ class Home extends Component {
 
   prepareCardGrid() {
     const cardsList = this.state.searchData.map((business, key) => (
-      <Card key={key} as={Link} to={"/business/details/" + business.id} href={"/business/details/" + business.id}>
+      <Card style={{ height: '20rem' }} key={key} as={Link} to={"/business/details/" + business.id} href={"/business/details/" + business.id}>
         <Card.Img
           variant="top"
           src={
@@ -106,8 +106,7 @@ class Home extends Component {
         <Card.Body>
           <Card.Title>{business.name}</Card.Title>
           <Card.Text>
-            Make sure to limit characters of this text or the height to maintain
-            UI consistency
+            {business.location.display_address.join(" ")}
           </Card.Text>
         </Card.Body>
       </Card>
