@@ -72,8 +72,7 @@ class Favorites extends Component {
         <Card.Body>
           <Card.Title>{business.name}</Card.Title>
           <Card.Text>
-            Make sure to limit characters of this text or the height to maintain
-            UI consistency
+            {business.location.display_address.join("\r\n")}
           </Card.Text>
         </Card.Body>
       </Card>
