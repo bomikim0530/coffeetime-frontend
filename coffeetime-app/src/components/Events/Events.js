@@ -84,7 +84,7 @@ class Events extends Component {
 
   wrapCardInColumn(card, key) {
     return (
-      <Col xs="12" sm="12" lg="10" key={key}>
+      <Col xs="10" sm="10" lg="10" className="offset-1 my-2" key={key}>
         {card}
       </Col>
     );

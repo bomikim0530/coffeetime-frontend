@@ -31,13 +31,12 @@ export default class Search extends Component {
     return (
       <Container>
         <Row sm={12}>
-          <Col sm={12}>
-            {/* <img src={require('../assets/coffeehero.jpg')} /> */}
+          <Col sm={8} className="offset-4">
+            <Form inline>
+              <FormControl type="text" placeholder="Search by location" className="mr-sm-2" value={this.state.searchLoc} onChange={this.onSearchLocChange} />
+              <Button className="btn-primary" onClick={this.onButtonClick}>Find Cafes</Button>
+            </Form>
           </Col>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.searchLoc} onChange={this.onSearchLocChange}/>
-            <Button className="btn-primary" onClick={this.onButtonClick}>Find Cafes</Button>
-          </Form>
         </Row>
       </Container>
     );
