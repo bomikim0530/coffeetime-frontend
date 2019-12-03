@@ -101,18 +101,20 @@ class BusinessDetails extends Component {
 
   render() {
     return (this.isDataLoaded() && <div>
+      <br/>
       <h1>{this.state.detail.name}</h1><br />
       <table>
         <tbody>
           <tr>
             <td width="400px"><img className="business-thumbnail" src={this.state.detail.image_url === undefined ? require("../../assets/hero.jpeg") : this.state.detail.image_url} alt="business thumbnail" /><br/><Favorite pageid={this.props.businessId} username={this.props.username} businessDetail={this.state.detail} favoriteListChangeHandler={this.favoriteListChangeHandler} /></td>
             <td width="700px">
-              <h3>Details</h3>
+              <h3>Location</h3>
               <table className="inside">
                 <tbody>
-                  <tr><td width="100%">A little table with the details about the vendor : this is to see how long it can get</td></tr>
+                  <tr><td width="100%">{this.state.detail.location.address1}</td></tr>
                 </tbody>
               </table>
+              <br/>
               <h3>Reviews</h3>
               <table className="inside"><tbody><tr><td width="100%"><ListOfComments pageid={this.props.businessId} username={this.props.username} getLatestComments={this.getLatestComments} getYelpComments={this.getYelpComments} /></td></tr></tbody></table>
               <CommentForm pageid={this.props.businessId} username={this.props.username} refreshCommentsView={this.refreshCommentsViewHandler} />
