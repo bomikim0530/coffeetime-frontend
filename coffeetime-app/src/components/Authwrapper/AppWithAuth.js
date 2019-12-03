@@ -94,7 +94,7 @@ class AppWithAuth extends React.Component {
             <div className="d-flex">
               <Nav className="mr-auto">
                 <Nav.Link as={Link} to='/'href="/">Home</Nav.Link>
-                {/* <Nav.Link as={Link} to='/events'href="/events">Events</Nav.Link> */}
+                <Nav.Link as={Link} to='/events'href="/events">Events</Nav.Link>
               </Nav>
               <Nav className="profile-dropdown">
                 <NavDropdown
