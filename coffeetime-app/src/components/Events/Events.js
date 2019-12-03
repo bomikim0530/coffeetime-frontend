@@ -79,7 +79,7 @@ class Events extends Component {
 
   wrapCardInColumn(card, key) {
     return (
-      <Col xs="12" sm="12" lg="4" key={key}>
+      <Col xs="12" sm="12" lg="10" key={key}>
         {card}
       </Col>
     );
@@ -87,7 +87,7 @@ class Events extends Component {
 
   prepareCardGrid() {
     const cardsList = this.state.searchData.map((yelp_event, key) => (
-      <Card key={key} as={Link} to={"/events/details/" + yelp_event.id} href={"/events/details/" + yelp_event.id}>
+      <Card style={{ height: '30rem' }} key={key} >
         <Card.Img
           variant="top"
           src={
@@ -99,9 +99,11 @@ class Events extends Component {
         />
         <Card.Body>
           <Card.Title>{yelp_event.name}</Card.Title>
-          <Card.Text>
-            Make sure to limit characters of this text or the height to maintain
-            UI consistency
+          <Card.Text className = "event-description">
+            Attending Count: {yelp_event.attending_count} <br></br>
+            Interested Count: {yelp_event.interested_count} <br></br><br></br>
+            Address:  {yelp_event.location.display_address} <br></br><br></br>
+            {yelp_event.description}
           </Card.Text>
         </Card.Body>
       </Card>
