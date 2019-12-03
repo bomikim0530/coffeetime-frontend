@@ -24,15 +24,18 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchLoc: null,
+      searchLoc: "berkeley",
       searchData: null,
       cardGrid: null
     };
+
+    this.updateLocationhandler = this.updateLocationhandler.bind(this);
   }
 
   async getSearchResponse() {
     // fetch data from a url endpoint
-    let loc = this.state.searchLoc ? this.state.searchLoc: "berkeley";
+    const loc = this.state.searchLoc;
+    // alert(loc);
     let queryParameters = {
       term: "coffee",
       location: loc,
@@ -48,7 +51,7 @@ class Home extends Component {
     if (!this.state.searchData) {
       (async () => {
         try {
-          const searchData = await this.getSearchResponse();
+          const searchData = await this.getSearchResponse("berkeley");
           this.setState({ searchData: searchData });
           this.prepareCardGrid();
         } catch (e) {
@@ -117,8 +120,7 @@ class Home extends Component {
   }
 
   updateLocationhandler(location) {
-    // alert("parent = " + location);
-
+    this.setState({searchLoc: location},
     (async () => {
       try {
         const searchData = await this.getSearchResponse();
@@ -127,15 +129,14 @@ class Home extends Component {
       } catch (e) {
         console.log(e);
       }
-    })();
-
+    }));
   }
 
   render() {
     return (
       <div>
         <Jumbotron id='Hero'>
-          <h1 id='searchTitle'>Coffee First.</h1>
+          <h1 id='searchTitle'>Coffee in {this.state.searchLoc}</h1>
           <Search updateLocation={this.updateLocationhandler} />
         </Jumbotron>
         <Favorites username={this.props.username} favorites={this.props.favorites} />

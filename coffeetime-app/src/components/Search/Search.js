@@ -24,7 +24,6 @@ export default class Search extends Component {
   }
 
   onButtonClick(event) {
-    // alert("child");
     this.props.updateLocation(this.state.searchLoc);
   }
 
