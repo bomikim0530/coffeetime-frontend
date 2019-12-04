@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import { Badge } from "react-bootstrap";
 
 import { Link } from "@reach/router";
 
@@ -85,9 +86,12 @@ class Favorites extends Component {
   }
 
   render() {
-    return ( this.state.cardGrid !== null &&
+    return ( this.state.cardGrid && this.state.cardGrid.length>0 &&
       <div>
-        {this.state.cardGrid}
+        <Jumbotron>
+          <h3><Badge pill variant="danger">Favorites</Badge></h3><br></br>
+          {this.state.cardGrid}
+        </Jumbotron>
       </div>
     );
   }

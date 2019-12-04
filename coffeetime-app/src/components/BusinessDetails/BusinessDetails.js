@@ -105,7 +105,8 @@ class BusinessDetails extends Component {
       <table>
         <tbody>
           <tr>
-            <td width="400px"><img className="business-thumbnail" src={this.state.detail.image_url === undefined ? require("../../assets/hero.jpeg") : this.state.detail.image_url} alt="business thumbnail" /><br/><Favorite pageid={this.props.businessId} username={this.props.username} businessDetail={this.state.detail} favoriteListChangeHandler={this.favoriteListChangeHandler} /></td>
+            <td width="400px"><img className="business-thumbnail" src={this.state.detail.image_url === undefined ? require("../../assets/hero.jpeg") : this.state.detail.image_url} alt="business thumbnail" /><br/>
+            <Favorite pageid={this.props.businessId} username={this.props.username} businessDetail={this.state.detail} favoriteListChangeHandler={this.favoriteListChangeHandler} /></td>
             <td width="700px">
               <h3>Details</h3>
               <table className="inside">

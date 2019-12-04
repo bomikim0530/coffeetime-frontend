@@ -89,7 +89,7 @@ class Favorite extends React.Component {
   render() {
     return (
       <div className="my-2">
-        <button className="btn btn-dark" onClick={this.markToggle}>{this.state.markText}</button>
+        <button className="btn btn-danger" onClick={this.markToggle}>{this.state.markText}</button>
       </div>
     );
   }
